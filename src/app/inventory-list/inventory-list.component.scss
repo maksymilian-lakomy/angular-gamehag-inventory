@@ -5,6 +5,7 @@ $background-color: #1a2226;
 .inventory {
     background-color: $background-color;
     width: calc(100% - 2 * 1em);
+    height: calc(100% - 2 * 1em);
     overflow-y: auto;
     padding: 1em;
 

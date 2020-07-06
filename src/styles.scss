@@ -1,9 +1,11 @@
 @import 'src/styles/variables.scss';
 
+$background-color: #242c2f;
+
 body {
     margin: 0;
     padding: 0;
     color: white;
-    background-color: $primary-color;
+    background-color: $background-color;
     min-height: 100vh;
 }

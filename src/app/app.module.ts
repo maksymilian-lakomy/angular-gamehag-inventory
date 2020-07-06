@@ -7,6 +7,9 @@ import { InventoryListComponent } from './inventory-list/inventory-list.componen
 import { InventoryItemComponent } from './inventory-item/inventory-item.component';
 import { ItemsCategoryPipe } from './pipes/items-category.pipe';
 import { ItemOverviewComponent } from './item-overview/item-overview.component';
+import { ItemActionDirective } from './directives/item-action.directive';
+import { KeyPreviewComponent } from './key-preview/key-preview.component';
+import { OpenChestComponent } from './open-chest/open-chest.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +17,10 @@ import { ItemOverviewComponent } from './item-overview/item-overview.component';
     InventoryListComponent,
     InventoryItemComponent,
     ItemsCategoryPipe,
-    ItemOverviewComponent
+    ItemOverviewComponent,
+    ItemActionDirective,
+    KeyPreviewComponent,
+    OpenChestComponent
   ],
   imports: [
     BrowserModule,

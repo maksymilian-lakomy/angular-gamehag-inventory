@@ -1,4 +1,9 @@
-<div *ngIf="item !== undefined">
-    {{item.name}}
-    <img [src]="item.picture">
+<div class="item__overview">
+    <div *ngIf="item !== undefined">
+        <h1>{{item.name}}</h1>
+        <div>
+            <img [src]="item.picture">
+        </div>
+    </div>
+    <ng-template item-action></ng-template>
 </div>
