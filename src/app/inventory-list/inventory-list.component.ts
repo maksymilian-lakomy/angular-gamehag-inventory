@@ -20,12 +20,14 @@ export class InventoryListComponent implements OnInit {
 
     public activeId: string;
 
-    constructor(private inventoryService: InventoryService, private router: Router) { }
+    constructor(private inventoryService: InventoryService, private router: Router, private route: ActivatedRoute) { }
 
     ngOnInit() {
         this.loadInventory();
-        this.router.events.subscribe(router => {
+        this.activeId = this.router.url.slice(1, this.router.url.length); // This should be changed
+        this.router.events.subscribe(async () => {
             this.loadInventory();
+            this.activeId = this.router.url.slice(1, this.router.url.length); // Like above
         });
     }
 

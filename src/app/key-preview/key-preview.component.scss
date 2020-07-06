@@ -1,0 +1,17 @@
+@import "src/styles/variables.scss";
+
+.key-preview {
+    text-transform: uppercase;
+
+    &__headline {
+        color: $special-color;
+        text-align: center;    
+    }
+
+    &__box {
+        margin-top: .25em;
+        padding: 1em;
+        background-color: $primary-color;
+        border-radius: 2px;
+    }
+}

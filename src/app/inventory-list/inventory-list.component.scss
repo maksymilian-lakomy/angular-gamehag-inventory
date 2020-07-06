@@ -1,19 +1,36 @@
-@import 'src/styles/variables.scss';
+@import "src/styles/variables.scss";
 
 $background-color: #1a2226;
 
 .inventory {
     background-color: $background-color;
     width: calc(100% - 2 * 1em);
-    height: calc(100% - 2 * 1em);
+    min-height: calc(100% - 2 * 1em);
     overflow-y: auto;
     padding: 1em;
+    text-transform: uppercase;
 
     &__category {
         &__header {
+            margin: 1em 0;
             display: flex;
-            justify-content: center;
+            width: 100%;
+            flex-direction: column;
+            align-items: center;
             color: $special-color;
+            font-weight: 400 !important;
+
+            &__headline {
+                margin-bottom: .5em;
+            }
+
+            &__value {
+                color: #72919e;
+
+                &__amount {
+                    color: white;
+                }
+            }
         }
 
         &__list {

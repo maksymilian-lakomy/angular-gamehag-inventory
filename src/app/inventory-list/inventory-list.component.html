@@ -1,10 +1,10 @@
 <div class="inventory">
     <section class="inventory__category" *ngFor="let category of categoriesKeys">
-        <div class="inventory__category__header">
-            <h3>{{categories[category].name}}</h3>
-        </div>
-        <div *ngIf="category == 1">
-            Wartość {{inventory | itemsCategory: category | prizesValue | currency}}
+        <div class="inventory__category__header" *ngIf="(inventory | itemsCategory: category).length > 0">
+            <div class="inventory__category__header__headline">{{categories[category].name}}</div>
+            <div *ngIf="category == 1" class="inventory__category__header__value">
+                Wartość = <span class="inventory__category__header__value__amount">{{inventory | itemsCategory: category | prizesValue | currency}}</span>
+            </div>
         </div>
         <ul class="inventory__category__list">
             <li class="inventory__category__list__element" *ngFor=" let item of (inventory | itemsCategory: category)">

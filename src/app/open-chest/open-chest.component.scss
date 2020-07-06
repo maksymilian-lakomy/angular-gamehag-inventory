@@ -1,0 +1,7 @@
+@import 'src/styles/variables.scss';
+
+.button {
+    color: black;
+    background-color: $special-color;
+    border-radius: .25em;
+}

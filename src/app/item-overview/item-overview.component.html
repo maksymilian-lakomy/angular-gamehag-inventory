@@ -1,10 +1,10 @@
 <div class="item__overview">
     <div class="item__overview__close" (click)="close()">
-        <button>x</button>
+        <button>X</button>
     </div>
-    <div *ngIf="item !== undefined">
-        <h1>{{item.name}}</h1>
-        <div>
+    <div class="item__overview__preview" *ngIf="item !== undefined">
+        <div class="item__overview__preview__headline">{{item.name}}</div>
+        <div class="item__overview__preview__picture">
             <img [src]="item.picture">
         </div>
     </div>
