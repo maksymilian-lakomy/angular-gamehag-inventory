@@ -1,9 +1,12 @@
-<p>inventory-list works!</p>
-<div class="inventory" *ngFor="let category of categoriesKeys">
-    <h3>{{categories[category].name}}</h3>
-    <section class="inventory__list">
-        <div *ngFor="let item of (inventory | itemsCategory: category)">
-            <img [src]="item.picture">
-            {{item.name}}</div>
+<div class="inventory">
+    <section class="inventory__category" *ngFor="let category of categoriesKeys">
+        <div class="inventory__category__header">
+            <h3>{{categories[category].name}}</h3>
+        </div>
+        <ul class="inventory__category__list">
+            <li class="inventory__category__list__element" *ngFor=" let item of (inventory | itemsCategory: category)">
+                <app-inventory-item [item]="item"></app-inventory-item>
+            </li>
+        </ul>
     </section>
 </div>
