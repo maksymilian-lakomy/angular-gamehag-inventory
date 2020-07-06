@@ -5,6 +5,7 @@ import { templatePrizes, templateChests } from 'src/constants/TemplateItems';
 
 import { v4 as uuidv4 } from 'uuid';
 import { Observable, of } from 'rxjs';
+import { ItemsService } from './items.service';
 
 const inventoryStorage = 'inventory';
 
@@ -13,12 +14,22 @@ const inventoryStorage = 'inventory';
 })
 export class InventoryService {
 
-    constructor() { }
+    constructor(private itemsService: ItemsService) { }
 
-    async addItem(item: ItemData) {
+    async addItem(item: ItemData): Promise<UniqueItemData> {
         const uniqueItem = this.createUniqueItem(item);
         const items = await this.getItems().toPromise();
-        localStorage.setItem(inventoryStorage, JSON.stringify(items.push(uniqueItem)));
+        items.push(uniqueItem);
+        localStorage.setItem(inventoryStorage, JSON.stringify(items));
+        return uniqueItem;
+    }
+
+    async openChest(chestId: string): Promise<UniqueItemData> {
+        const items = await this.itemsService.getPrizes().toPromise();
+        const prizeIndex = Math.floor(Math.random() * items.length);
+        const newItem = await this.addItem(items[prizeIndex]);
+        await this.removeItem(chestId);
+        return newItem;
     }
 
     private createUniqueItem(item: ItemData): UniqueItemData {
@@ -32,12 +43,12 @@ export class InventoryService {
         const index = items.findIndex(_item => _item.id === id);
         if (index === -1)
             console.error(`There is no item with id: ${id}!`)
-        items.slice(index, 1);
+        items.splice(index, 1);
         localStorage.setItem(inventoryStorage, JSON.stringify(items));
     }
 
     private createDefaults(): Array<UniqueItemData> {
-        const arr =  templateChests.map(_item => this.createUniqueItem(_item));
+        const arr = templateChests.map(_item => this.createUniqueItem(_item));
         arr.push(...templatePrizes.map(_item => this.createUniqueItem(_item)));
         return arr;
     }

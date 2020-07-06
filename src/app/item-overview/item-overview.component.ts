@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild, ComponentFactoryResolver } from '@angular/core';
-import { InventoryService } from '../services/inventory.service';
+import { InventoryService } from 'src/app/services/inventory.service';
 import { ActivatedRoute } from '@angular/router';
 import { UniqueItemData } from 'src/classes/Item';
-import { ItemActionDirective } from '../directives/item-action.directive';
+import { ItemActionDirective, ItemPayload} from 'src/app/directives/item-action.directive';
 
 import { itemTypesActions } from 'src/constants/ItemTypesActions';
 
@@ -32,6 +32,8 @@ export class ItemOverviewComponent implements OnInit {
         viewContainerRef.clear();
 
         const componentRef = viewContainerRef.createComponent(componentFactory);
+        (<ItemPayload>componentRef.instance).id = this.item.id;
+        (<ItemPayload>componentRef.instance).item = this.item;
     }
 
 }
