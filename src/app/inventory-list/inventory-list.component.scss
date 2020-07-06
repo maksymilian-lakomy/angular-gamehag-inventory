@@ -1,0 +1,12 @@
+.inventory {
+    width: 100%;
+
+    &__list {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+
+        img {
+            max-width: 100%;
+        }
+    }
+}
