@@ -1,0 +1,7 @@
+<p>inventory-list works!</p>
+<div *ngFor="let category of categoriesKeys">
+    <h3>{{categories[category].name}}</h3>
+    <div *ngFor="let item of (inventory | itemsCategory: category)">
+        <img [src]="item.picture">
+        {{item.name}}</div>
+</div>
