@@ -3,4 +3,10 @@
     display: flex;
     width: 100%;
     flex-direction: column;
+
+    &__close {
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
 }

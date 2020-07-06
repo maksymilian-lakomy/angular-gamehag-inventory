@@ -2,5 +2,7 @@
     <div class="app__router">
         <router-outlet></router-outlet>
     </div>
-    <app-inventory-list class="app__inventory" [inventory]="inventory"></app-inventory-list>
+    <div class="app__inventory">
+        <router-outlet name="inventory"></router-outlet>
+    </div>
 </div>

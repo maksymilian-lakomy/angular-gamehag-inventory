@@ -2,7 +2,9 @@ import { Component, OnInit, Input } from '@angular/core';
 import { UniqueItemData } from 'src/classes/Item';
 
 import { categories, categoriesKeys } from 'src/constants/Categories';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+
+import { InventoryService } from 'src/app/services/inventory.service';
 
 @Component({
     selector: 'app-inventory-list',
@@ -11,18 +13,24 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class InventoryListComponent implements OnInit {
 
-    @Input()
-    public inventory: Array<UniqueItemData>;
+    public inventory: Array<UniqueItemData> = [];
 
     public categories = categories;
     public categoriesKeys = categoriesKeys;
 
     public activeId: string;
 
-    constructor() { }
+    constructor(private inventoryService: InventoryService, private router: Router) { }
 
-    ngOnInit(): void {
-        console.log(this.activeId);
+    ngOnInit() {
+        this.loadInventory();
+        this.router.events.subscribe(router => {
+            this.loadInventory();
+        });
+    }
+
+    async loadInventory() {
+        this.inventory = await this.inventoryService.getItems().toPromise();
     }
 
 }

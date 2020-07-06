@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, ComponentFactoryResolver } from '@angular/core';
 import { InventoryService } from 'src/app/services/inventory.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UniqueItemData } from 'src/classes/Item';
 import { ItemActionDirective, ItemPayload} from 'src/app/directives/item-action.directive';
 
@@ -13,7 +13,7 @@ import { itemTypesActions } from 'src/constants/ItemTypesActions';
 })
 export class ItemOverviewComponent implements OnInit {
 
-    constructor(private componentFactoryResolver: ComponentFactoryResolver, private inventoryService: InventoryService, private route: ActivatedRoute) { }
+    constructor(private componentFactoryResolver: ComponentFactoryResolver, private inventoryService: InventoryService, private route: ActivatedRoute, private router: Router) { }
 
     public item: UniqueItemData;
 
@@ -26,6 +26,10 @@ export class ItemOverviewComponent implements OnInit {
         });
     }
 
+    close(): void {
+        this.router.navigate(['']);
+    }
+
     loadComponent() {
         const componentFactory = this.componentFactoryResolver.resolveComponentFactory(itemTypesActions[this.item.itemType].component);
         const viewContainerRef = this.itemAction.viewContainerRef;
@@ -35,5 +39,4 @@ export class ItemOverviewComponent implements OnInit {
         (<ItemPayload>componentRef.instance).id = this.item.id;
         (<ItemPayload>componentRef.instance).item = this.item;
     }
-
 }

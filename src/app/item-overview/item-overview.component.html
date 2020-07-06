@@ -1,4 +1,7 @@
 <div class="item__overview">
+    <div class="item__overview__close" (click)="close()">
+        <button>x</button>
+    </div>
     <div *ngIf="item !== undefined">
         <h1>{{item.name}}</h1>
         <div>
