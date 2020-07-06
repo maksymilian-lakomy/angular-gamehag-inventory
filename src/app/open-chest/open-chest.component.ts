@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { InventoryService } from 'src/app/services/inventory.service';
 import { ItemChestData } from 'src/classes/Item';
 import { ItemPayload } from 'src/app/directives/item-action.directive';
@@ -20,8 +20,12 @@ export class OpenChestComponent implements OnInit, ItemPayload {
     }
 
     public async openChest() {
-        const prize = await this.inventoryService.openChest(this.id);
-        this.router.navigate([prize.id]);
+        try {
+            const prize = await this.inventoryService.openChest(this.id);
+            this.router.navigate([prize.id]);
+        } catch (e) {
+            console.error(e);
+        }
     }
 
 }

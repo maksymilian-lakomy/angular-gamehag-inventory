@@ -13,7 +13,6 @@ const inventoryStorage = 'inventory';
     providedIn: 'root'
 })
 export class InventoryService {
-
     constructor(private itemsService: ItemsService) { }
 
     async addItem(item: ItemData): Promise<UniqueItemData> {
@@ -42,7 +41,7 @@ export class InventoryService {
         const items = await this.getItems().toPromise();
         const index = items.findIndex(_item => _item.id === id);
         if (index === -1)
-            console.error(`There is no item with id: ${id}!`)
+            throw new Error(`There is no item with id: ${id}!`)
         items.splice(index, 1);
         localStorage.setItem(inventoryStorage, JSON.stringify(items));
     }
@@ -65,7 +64,7 @@ export class InventoryService {
         const items = await this.getItems().toPromise();
         const index = items.findIndex(_item => _item.id === id);
         if (index === -1)
-            console.error(`There is no item with id: ${id}!`);
+            throw new Error(`There is no item with id: ${id}!`);
         return items[index];
     }
 }
