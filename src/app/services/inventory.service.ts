@@ -49,4 +49,12 @@ export class InventoryService {
         }
         return of(JSON.parse(localStorage.getItem('inventory')) as Array<UniqueItemData>);
     }
+
+    async getItem(id: string): Promise<UniqueItemData> {
+        const items = await this.getItems().toPromise();
+        const index = items.findIndex(_item => _item.id === id);
+        if (index === -1)
+            console.error(`There is no item with id: ${id}!`);
+        return items[index];
+    }
 }

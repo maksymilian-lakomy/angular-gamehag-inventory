@@ -11,6 +11,9 @@ export class InventoryItemComponent implements OnInit {
     @Input()
     item: UniqueItemData;
 
+    @Input()
+    active: boolean;
+
     constructor() { }
 
     ngOnInit(): void {

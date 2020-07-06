@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { InventoryListComponent } from './inventory-list/inventory-list.component';
 import { InventoryItemComponent } from './inventory-item/inventory-item.component';
 import { ItemsCategoryPipe } from './pipes/items-category.pipe';
+import { ItemOverviewComponent } from './item-overview/item-overview.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     InventoryListComponent,
     InventoryItemComponent,
-    ItemsCategoryPipe
+    ItemsCategoryPipe,
+    ItemOverviewComponent
   ],
   imports: [
     BrowserModule,

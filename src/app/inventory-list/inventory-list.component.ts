@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { UniqueItemData } from 'src/classes/Item';
 
 import { categories, categoriesKeys } from 'src/constants/Categories';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'app-inventory-list',
@@ -16,9 +17,12 @@ export class InventoryListComponent implements OnInit {
     public categories = categories;
     public categoriesKeys = categoriesKeys;
 
+    public activeId: string;
+
     constructor() { }
 
     ngOnInit(): void {
+        console.log(this.activeId);
     }
 
 }

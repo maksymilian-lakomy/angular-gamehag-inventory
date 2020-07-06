@@ -5,7 +5,7 @@
         </div>
         <ul class="inventory__category__list">
             <li class="inventory__category__list__element" *ngFor=" let item of (inventory | itemsCategory: category)">
-                <app-inventory-item [item]="item"></app-inventory-item>
+                <app-inventory-item [item]="item" [active]="item.id === activeId"></app-inventory-item>
             </li>
         </ul>
     </section>

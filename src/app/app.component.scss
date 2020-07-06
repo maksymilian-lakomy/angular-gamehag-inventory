@@ -1,0 +1,13 @@
+.app {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-template-areas: 'router inventory';
+
+    &__router {
+        grid-area: router;
+    }
+
+    &__inventory {
+        grid-area: inventory
+    }
+}

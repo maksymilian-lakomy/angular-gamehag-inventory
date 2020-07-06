@@ -2,10 +2,15 @@
 
 .item {
     border: 3px solid $primary-color;
+    display: block;
     
     &__portrait {
         width: 100%;
         height: 100%;
         display: block;
     }
+}
+
+.item--active {
+    border-color: $highlight-color;
 }
