@@ -10,6 +10,7 @@ import { ItemOverviewComponent } from './item-overview/item-overview.component';
 import { ItemActionDirective } from './directives/item-action.directive';
 import { KeyPreviewComponent } from './key-preview/key-preview.component';
 import { OpenChestComponent } from './open-chest/open-chest.component';
+import { PrizesValuePipe } from './pipes/prizes-value.pipe';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { OpenChestComponent } from './open-chest/open-chest.component';
     ItemOverviewComponent,
     ItemActionDirective,
     KeyPreviewComponent,
-    OpenChestComponent
+    OpenChestComponent,
+    PrizesValuePipe
   ],
   imports: [
     BrowserModule,

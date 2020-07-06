@@ -3,6 +3,9 @@
         <div class="inventory__category__header">
             <h3>{{categories[category].name}}</h3>
         </div>
+        <div *ngIf="category == 1">
+            Wartość {{inventory | itemsCategory: category | prizesValue | currency}}
+        </div>
         <ul class="inventory__category__list">
             <li class="inventory__category__list__element" *ngFor=" let item of (inventory | itemsCategory: category)">
                 <app-inventory-item [item]="item" [active]="item.id === activeId"></app-inventory-item>
