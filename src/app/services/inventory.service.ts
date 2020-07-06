@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { UniqueItemData, ItemData } from 'src/classes/Item';
 
-import { templatePrizes, templateChests } from 'src/constants/TemplateItems';
+import { defaultItems } from 'src/constants/TemplateItems';
 
 import { v4 as uuidv4 } from 'uuid';
 import { Observable, of } from 'rxjs';
@@ -17,15 +17,20 @@ export class InventoryService {
 
     async openChest(chestId: string): Promise<UniqueItemData> {
         const items = await this.itemsService.getPrizes().toPromise();
+
         const prizeIndex = Math.floor(Math.random() * items.length);
+
+        // Because of a localStorage methods are called synchronously. In more real life example it would be Promise.all(). 
         const newItem = await this.addItem(items[prizeIndex]);
         await this.removeItem(chestId);
+
         return newItem;
     }
 
     private createUniqueItem(item: ItemData): UniqueItemData {
         const uniqueItem = { id: uuidv4() } as UniqueItemData;
         Object.assign(uniqueItem, item);
+
         return uniqueItem;
     }
 
@@ -34,14 +39,17 @@ export class InventoryService {
         const items = await this.getItems().toPromise();
         items.push(uniqueItem);
         localStorage.setItem(inventoryStorage, JSON.stringify(items));
+
         return uniqueItem;
     }
 
     async removeItem(id: string) {
         const items = await this.getItems().toPromise();
         const index = items.findIndex(_item => _item.id === id);
+
         if (index === -1)
-            throw new Error(`There is no item with id: ${id}!`)
+            throw new Error(`There is no item with id: ${id}!`);
+
         items.splice(index, 1);
         localStorage.setItem(inventoryStorage, JSON.stringify(items));
     }
@@ -63,9 +71,7 @@ export class InventoryService {
     }
 
     private createDefaults(): Array<UniqueItemData> {
-        const arr = templateChests.map(_item => this.createUniqueItem(_item));
-        arr.push(...templatePrizes.map(_item => this.createUniqueItem(_item)));
-        return arr;
+        return defaultItems.map(_item => this.createUniqueItem(_item));
     }
 
 }

@@ -1,4 +1,4 @@
-import { ItemPrizeData, ItemChestData, ItemTypes } from '../classes/Item';
+import { ItemPrizeData, ItemChestData, ItemTypes, ItemData } from '../classes/Item';
 
 export const templatePrizes: ReadonlyArray<ItemPrizeData> = [
     { name: 'Final Fantasy VII: Remake', picture: '../assets/sample-reward.png', price: 59.00, key: 'DTC5A-85I3K-26178', itemType: ItemTypes.Prize },
@@ -10,4 +10,8 @@ export const templatePrizes: ReadonlyArray<ItemPrizeData> = [
 
 export const templateChests: ReadonlyArray<ItemChestData> = [
     { name: 'Skrzynia Infernus', picture: '../assets/sample-chest.png', itemType: ItemTypes.Chest },
+]
+
+export const defaultItems: Array<ItemData> = [
+    templateChests[0], templateChests[0], templateChests[0], templateChests[0], templatePrizes[0], templatePrizes[1]
 ]

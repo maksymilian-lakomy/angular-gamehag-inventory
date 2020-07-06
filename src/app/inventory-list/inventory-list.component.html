@@ -2,6 +2,7 @@
     <section class="inventory__category" *ngFor="let category of categoriesKeys">
         <div class="inventory__category__header" *ngIf="(inventory | itemsCategory: category).length > 0">
             <div class="inventory__category__header__headline">{{categories[category].name}}</div>
+            <!-- Part below should be rewritten to dynamic components loading -->
             <div *ngIf="category == 1" class="inventory__category__header__value">
                 Wartość = <span class="inventory__category__header__value__amount">{{inventory | itemsCategory: category | prizesValue | currency}}</span>
             </div>
